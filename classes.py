@@ -4,6 +4,9 @@ students =[]
 
 # create class
 class Student:
+    # class var
+    school_name = "abc elementary"
+
     # contructor
     # self need to be added
     def __init__(self, name, student_id=None):
@@ -20,9 +23,25 @@ class Student:
     def __str__(self):
         return "Student " + self.name
 
+    # capitalize the name
     def get_name_capitize(self):
         return self.name.capitalize()
 
-student_mark = Student("mark")
+    def get_school_name(self):
+        return self.school_name
 
-print(student_mark)
+
+# inherited from Student
+class HighSchoolStudent(Student):
+    school_name = "abc high school"
+
+    def get_school_name(self):
+        return self.school_name + " student"
+
+    # call parent class method
+    def get_name_capitize(self):
+        original_value = super().get_name_capitize()
+        return  original_value + " -sd"
+
+james = HighSchoolStudent("James")
+print(james.get_name_capitize())
