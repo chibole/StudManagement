@@ -25,28 +25,47 @@ def add_student(name, student_id= None):
     # add dict to the list
     students.append(student)
 
+
 # any number ags
-def var_args(name, *args):
-    print(name)
-    print(args)
+# def var_args(name, *args):
+#     print(name)
+#     print(args)
+#
+# def kvar_args(name, **kwargs):
+#     print(name)
+#     print(kwargs["description"], kwargs["id"])
 
-def kvar_args(name, **kwargs):
-    print(name)
-    print(kwargs["description"], kwargs["id"])
-
-
-
-student_list = get_students_titlecase()
-
-student_name = input("Enter a student name")
-student_id = input("Enter student Id")
-
-add_student(student_name, student_id)
-# add_student("john")
-# add_student("john2")
-# add_student("john3")
-# add_student("john4")
-
-print(students)
 # var_args("test", "user", "new",  True)
 # kvar_args("don", description ="user", id ="id_123")
+
+# save list to the file
+def save_file(student):
+    try:
+        f = open("students.txt", "a")
+        f.write(student + "\n")
+        f.close()
+    except Exception:
+        print("Could not save file")
+
+
+# read from the file
+def read_file():
+    try:
+        f = open("students.txt", "r")
+        for student in f.readlines():
+            add_student(student)
+        f.close()
+    except Exception:
+        print("Could not read file")
+
+# read file is exists
+read_file()
+
+student_name = input("Enter a student name: ")
+student_id = input("Enter student Id: ")
+
+add_student(student_name, student_id)
+# call to save
+save_file(student_name)
+
+print(students)
