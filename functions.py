@@ -20,14 +20,15 @@ def add_student(name, student_id= None):
     # add random student id if none provided
     if student_id is None:
         student_id =  random.randrange(0, math.pow(2,24)-1)
+    #     crete a dict
     student = {"name": name, "student_id": student_id}
+    # add dict to the list
     students.append(student)
 
 # any number ags
 def var_args(name, *args):
     print(name)
     print(args)
-
 
 def kvar_args(name, **kwargs):
     print(name)
@@ -37,11 +38,15 @@ def kvar_args(name, **kwargs):
 
 student_list = get_students_titlecase()
 
-add_student("john")
-add_student("john2")
-add_student("john3")
-add_student("john4")
+student_name = input("Enter a student name")
+student_id = input("Enter student Id")
+
+add_student(student_name, student_id)
+# add_student("john")
+# add_student("john2")
+# add_student("john3")
+# add_student("john4")
 
 print(students)
-var_args("test", "user", "new",  True)
-kvar_args("don", description ="user", id ="id_123")
+# var_args("test", "user", "new",  True)
+# kvar_args("don", description ="user", id ="id_123")
